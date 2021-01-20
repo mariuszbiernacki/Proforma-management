@@ -1,4 +1,14 @@
-# Getting Started with Create React App
+### 🔧 Technology Stack
+
+- React.js
+- Redux
+- Styled-Components
+
+# Proforma Management
+
+<br />
+link to demo version: //////////
+<br />
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
