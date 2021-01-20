@@ -7,7 +7,7 @@
 # Proforma Management
 
 <br />
-link to demo version: //////////
+link to demo version: https://proforma-management.netlify.app/
 <br />
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
