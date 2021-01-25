@@ -2,12 +2,12 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA0sp_GrNPpzqBa_W5shg0GZk_hhliYMao",
-  authDomain: "proforma-application.firebaseapp.com",
-  projectId: "proforma-application",
-  storageBucket: "proforma-application.appspot.com",
-  messagingSenderId: "74756999837",
-  appId: "1:74756999837:web:a038beb4221bb42d92a274",
+  apiKey: `${process.env.REACT_APP_API_KEY}`,
+  authDomain: `${process.env.REACT_APP_AUTH_DOMAIN}`,
+  projectId: `${process.env.REACT_APP_PROJECT_ID}`,
+  storageBucket: `${process.env.REACT_APP_STORAGE_BUCKET}`,
+  messagingSenderId: `${process.env.REACT_APP_MESSAGING_SENDER}`,
+  appId: `${process.env.REACT_APP_APP_ID}`,
 };
 
 firebase.initializeApp(firebaseConfig);
