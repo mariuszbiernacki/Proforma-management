@@ -3,6 +3,7 @@
 - React.js
 - Redux
 - Styled-Components
+- Firebase
 
 # Proforma Management
 
