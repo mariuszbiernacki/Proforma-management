@@ -1,4 +1,15 @@
-# Getting Started with Create React App
+### 🔧 Technology Stack
+
+- React.js
+- Redux
+- Styled-Components
+- Firebase
+
+# Proforma Management
+
+<br />
+link to demo version: https://proforma-management.netlify.app/
+<br />
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
