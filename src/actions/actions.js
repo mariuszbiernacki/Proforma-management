@@ -1,16 +1,16 @@
 import { actionsTypes } from "./actionsTypes";
 
+export const setProformaList = (dataBase) => {
+  return {
+    type: actionsTypes.SET_PROFORMA_LIST,
+    payload: dataBase,
+  };
+};
+
 export const addProforma = (newProforma) => {
   return {
     type: actionsTypes.ADD_PROFORMA,
     payload: newProforma,
-  };
-};
-
-export const deleteProforma = (proformaNumber) => {
-  return {
-    type: actionsTypes.DELETE_PROFORMA,
-    payload: proformaNumber,
   };
 };
 

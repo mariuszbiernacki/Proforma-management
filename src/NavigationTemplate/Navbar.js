@@ -26,7 +26,7 @@ const Navbar = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar style={{ backgroundColor: "#176f2c" }} position="static">
         <Container fixed>
           <Toolbar variant="dense">
             <NavLink to="/">Strona startowa</NavLink>

@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import TextField from "@material-ui/core/TextField";
+import React from "react";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -10,7 +9,7 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
-import { deleteProforma as deleteProformaAction } from "../actions/actions";
+import { deleteProforma } from "../firebaseConfig/firebaseUtils";
 
 const useStyles = makeStyles({
   table: {
@@ -19,7 +18,7 @@ const useStyles = makeStyles({
   },
 });
 
-const DisplayProformaTable = ({ proformaList, deleteProforma }) => {
+const DisplayProformaTable = ({ proformaList }) => {
   const classes = useStyles();
   return (
     <TableContainer component={Paper}>
@@ -36,6 +35,7 @@ const DisplayProformaTable = ({ proformaList, deleteProforma }) => {
         <TableBody>
           {proformaList.map((proforma) => {
             const {
+              id,
               proformaNumber,
               companyName,
               product,
@@ -44,7 +44,7 @@ const DisplayProformaTable = ({ proformaList, deleteProforma }) => {
               date,
             } = proforma;
             return (
-              <TableRow key={proformaNumber}>
+              <TableRow key={id}>
                 <TableCell>{proformaNumber}</TableCell>
                 <TableCell>{companyName}</TableCell>
                 <TableCell>{product}</TableCell>
@@ -56,7 +56,9 @@ const DisplayProformaTable = ({ proformaList, deleteProforma }) => {
                   variant="contained"
                   type="submit"
                   color="secondary"
-                  onClick={() => deleteProforma(proformaNumber)}
+                  onClick={() => {
+                    deleteProforma(id);
+                  }}
                 >
                   usuń
                 </Button>
@@ -75,14 +77,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    deleteProforma: (proformaNumber) =>
-      dispatch(deleteProformaAction(proformaNumber)),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DisplayProformaTable);
+export default connect(mapStateToProps)(DisplayProformaTable);

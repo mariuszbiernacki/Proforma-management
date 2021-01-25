@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import moment from "moment";
-import { Form } from "../styledComponents/Form";
-// material ui
-import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
@@ -10,15 +7,16 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import "date-fns";
-// import Grid from "@material-ui/core/Grid";
 import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
-//redux
+import Form from "../styledComponents/Form";
+import StyledButton from "../styledComponents/Button";
 import { connect } from "react-redux";
 import { addProforma as addProformaAction } from "../actions/actions";
+import { baseCollection } from "../firebaseConfig/firebaseUtils";
 
 const AddNewProformaForm = ({ addProforma }) => {
   const [currency, setCurrency] = useState("PLN");
@@ -35,6 +33,7 @@ const AddNewProformaForm = ({ addProforma }) => {
 
   const handleForm = (e) => {
     e.preventDefault();
+
     const newProforma = {
       proformaNumber: e.target.proformaNumber.value,
       companyName: e.target.companyName.value,
@@ -43,6 +42,7 @@ const AddNewProformaForm = ({ addProforma }) => {
       currency,
       date: formattedDate,
     };
+    baseCollection.add(newProforma);
     addProforma(newProforma);
     e.target.reset();
   };
@@ -99,9 +99,13 @@ const AddNewProformaForm = ({ addProforma }) => {
           }}
         />
       </MuiPickersUtilsProvider>
-      <Button variant="contained" type="submit" color="primary">
+      <StyledButton
+        variant="contained"
+        type="submit"
+        style={{ backgroundColor: "green" }}
+      >
         dodaj proformę
-      </Button>
+      </StyledButton>
     </Form>
   );
 };

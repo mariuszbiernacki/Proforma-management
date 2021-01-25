@@ -6,3 +6,5 @@ export const Form = styled.form`
   max-width: 400px;
   margin: 100px auto;
 `;
+
+export default Form;

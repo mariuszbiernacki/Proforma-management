@@ -1,7 +1,5 @@
 import React from "react";
-//material ui
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -10,9 +8,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
-// styled components
-import { Form } from "../styledComponents/Form";
-//redux
+import Form from "../styledComponents/Form";
+import StyledButton from "../styledComponents/Button";
 import { connect } from "react-redux";
 import { filterProformaListByName as filterProformaListByNameAction } from "../actions/actions";
 
@@ -43,9 +40,9 @@ const FilterProformaTable = ({
           variant="outlined"
           name="companyName"
         />
-        <Button variant="contained" type="submit" color="primary">
+        <StyledButton variant="contained" type="submit">
           szukaj
-        </Button>
+        </StyledButton>
       </Form>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
