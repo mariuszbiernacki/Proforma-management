@@ -20,3 +20,8 @@ export const filterProformaListByName = (companyName) => {
     payload: companyName,
   };
 };
+
+export const selectProforma = (proformaId) => ({
+  type: actionsTypes.SELECT_PROFORMA,
+  payload: proformaId,
+});

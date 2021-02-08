@@ -18,11 +18,7 @@ import {
 } from "@material-ui/pickers";
 import Form from "../styledComponents/Form";
 import StyledButton from "../styledComponents/Button";
-import {
-  closeEditForm,
-  editProforma,
-  openEditForm,
-} from "../firebaseConfig/firebaseUtils";
+import { closeEditForm, editProforma } from "../firebaseConfig/firebaseUtils";
 
 const useStyles = makeStyles((theme) => ({
   modal: {

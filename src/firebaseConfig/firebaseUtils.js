@@ -10,6 +10,7 @@ export const getDocumentsFormCollection = (doc) => {
 };
 
 export const deleteProforma = (id) => {
+  console.log(id)
   baseCollection
     .doc(id)
     .delete()

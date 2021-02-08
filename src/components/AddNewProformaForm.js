@@ -41,6 +41,7 @@ const AddNewProformaForm = ({ addProforma }) => {
       orderValue: e.target.orderValue.value,
       currency,
       date: formattedDate,
+      isEditing: false,
     };
     baseCollection.add(newProforma);
     addProforma(newProforma);

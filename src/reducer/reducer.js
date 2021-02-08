@@ -3,6 +3,7 @@ import { actionsTypes } from "../actions/actionsTypes";
 const initialState = {
   proformaList: [],
   filteredProformaList: [],
+  selectedProforma: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -27,6 +28,17 @@ const reducer = (state = initialState, action) => {
         ...state,
         filteredProformaList: [...chosenProformas],
       };
+
+    case actionsTypes.SELECT_PROFORMA:
+      const chosenProforma = state.proformaList.find(
+        (proforma) => proforma.id === payload
+      );
+
+      return {
+        ...state,
+        selectedProforma: chosenProforma,
+      };
+
     default: {
       return state;
     }

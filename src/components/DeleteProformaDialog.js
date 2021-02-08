@@ -4,9 +4,10 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { deleteProforma } from "../firebaseConfig/firebaseUtils";
+import { connect } from "react-redux";
 
 const DeleteProformaDialog = ({
-  id,
+  selectedProforma,
   openDeleteProformaDialog,
   handleDeleteProformaDialogClose,
 }) => {
@@ -26,7 +27,7 @@ const DeleteProformaDialog = ({
         </Button>
         <Button
           onClick={() => {
-            deleteProforma(id);
+            deleteProforma(selectedProforma.id);
             handleDeleteProformaDialogClose();
           }}
           color="secondary"
@@ -39,4 +40,8 @@ const DeleteProformaDialog = ({
   );
 };
 
-export default DeleteProformaDialog;
+const mapStateToProps = (state) => ({
+  selectedProforma: state.selectedProforma,
+});
+
+export default connect(mapStateToProps)(DeleteProformaDialog);

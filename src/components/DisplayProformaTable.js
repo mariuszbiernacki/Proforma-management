@@ -9,9 +9,10 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
-import { deleteProforma, openEditForm } from "../firebaseConfig/firebaseUtils";
+import { openEditForm } from "../firebaseConfig/firebaseUtils";
 import EditProformaModal from "./EditProformaModal";
 import DeleteProformaDialog from "./DeleteProformaDialog";
+import { selectProforma } from "../actions/actions";
 
 const useStyles = makeStyles({
   table: {
@@ -20,7 +21,7 @@ const useStyles = makeStyles({
   },
 });
 
-const DisplayProformaTable = ({ proformaList }) => {
+const DisplayProformaTable = ({ proformaList, selectProforma }) => {
   const classes = useStyles();
   const [openDeleteProformaDialog, setOpenDeleteProformaDialog] = useState(
     false
@@ -84,28 +85,26 @@ const DisplayProformaTable = ({ proformaList }) => {
                       variant="contained"
                       type="submit"
                       color="secondary"
-                      onClick={handleDeleteProformaDialogOpen}
+                      onClick={() => {
+                        selectProforma(id);
+                        handleDeleteProformaDialogOpen();
+                      }}
                     >
                       usuń
                     </Button>
                   </TableRow>
-                  {/* Modal to delete proforma */}
-                  <DeleteProformaDialog
-                    openDeleteProformaDialog={openDeleteProformaDialog}
-                    handleDeleteProformaDialogOpen={
-                      handleDeleteProformaDialogOpen
-                    }
-                    handleDeleteProformaDialogClose={
-                      handleDeleteProformaDialogClose
-                    }
-                    id={id}
-                  />
                 </>
               );
             })}
           </TableBody>
         </Table>
       </TableContainer>
+      {/* Modal to delete proforma */}
+      <DeleteProformaDialog
+        openDeleteProformaDialog={openDeleteProformaDialog}
+        handleDeleteProformaDialogOpen={handleDeleteProformaDialogOpen}
+        handleDeleteProformaDialogClose={handleDeleteProformaDialogClose}
+      />
     </>
   );
 };
@@ -116,4 +115,11 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(DisplayProformaTable);
+const mapDispatchToProps = (dispatch) => ({
+  selectProforma: (proformaId) => dispatch(selectProforma(proformaId)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DisplayProformaTable);
